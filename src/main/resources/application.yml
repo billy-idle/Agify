@@ -1,0 +1,43 @@
+server:
+  port: 8081
+  error:
+    include-stacktrace: never
+
+spring:
+  application:
+    name: agify
+  boot:
+    admin:
+      client:
+        url: http://127.0.0.1:8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  info:
+    env:
+      enabled: true
+  endpoint:
+    env:
+      show-values: always
+
+agify:
+  url: https://api.agify.io?name=%s
+
+logging:
+  level:
+    web: info
+    com:
+      github:
+        agify:
+          controller: info
+          service: info
+  logback:
+    rollingpolicy:
+      max-file-size: 10MB
+      max-history: 90
+      total-size-cap: 20GB
+  file:
+    name: logs/${spring.application.name}.log
