@@ -2,7 +2,7 @@ server:
   port: 8081
   error:
     include-stacktrace: never
-
+    include-message: always
 spring:
   application:
     name: agify
@@ -10,6 +10,9 @@ spring:
     admin:
       client:
         url: http://127.0.0.1:8080
+  output:
+    ansi:
+      enabled: always
 
 management:
   endpoints:
@@ -22,9 +25,14 @@ management:
   endpoint:
     env:
       show-values: always
+  tracing:
+    sampling:
+      probability: 1.0
 
 agify:
   url: https://api.agify.io?name=%s
+  response:
+    error: error
 
 logging:
   level:
@@ -41,3 +49,5 @@ logging:
       total-size-cap: 20GB
   file:
     name: logs/${spring.application.name}.log
+
+http-exchange-repository-capacity: 1000

@@ -1,7 +1,7 @@
-package com.github.agify.domain;
+package com.github.agify.prediction;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public record Prediction(Long count, String name, int age) {
+record Prediction(Long count, String name, int age) {
 }
